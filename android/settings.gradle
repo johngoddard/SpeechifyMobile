@@ -1,0 +1,3 @@
+rootProject.name = 'SpeechifyMobile'
+
+include ':app'

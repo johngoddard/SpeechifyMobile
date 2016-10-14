@@ -1,53 +1,28 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { AppRegistry, Navigator, Text, View } from 'react-native';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import configureStore from './app/store/store.js';
+import AppContainer from './app/container/app_container.js';
 
-class SpeechifyMobile extends Component {
+let store = configureStore();
+
+class SpeechifyMobileApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Provider store={store}>
+        <Navigator
+          initialRoute={{ title: 'My Initial Scene', index: 0 }}
+          renderScene={(route, navigator) =>
+            <AppContainer />
+          }
+        />
+    </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+import { connect } from 'react-redux';
+import * as ACTIONS from './app/actions/track_actions.js';
 
-AppRegistry.registerComponent('SpeechifyMobile', () => SpeechifyMobile);
+AppRegistry.registerComponent('SpeechifyMobile', () => SpeechifyMobileApp);

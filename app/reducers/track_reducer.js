@@ -9,7 +9,7 @@ const TrackReducer = (state = _default, action) => {
   switch (action.type) {
     case TrackConstants.RECEIVE_ALL_TRACKS:
       const newState = arrayToObject(action.tracks);
-      break;
+      return newState;
     default:
       return state;
   }

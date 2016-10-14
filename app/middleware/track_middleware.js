@@ -4,7 +4,7 @@ import * as ACTIONS from '../actions/track_actions.js';
 
 const TrackMiddleware = ({getState, dispatch}) => next => action => {
   let success;
-  let error;
+  let error = err => {console.log(err);};
 
   switch (action.type) {
     case TrackConstants.FETCH_ALL_TRACKS:

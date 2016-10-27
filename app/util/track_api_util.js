@@ -4,8 +4,10 @@ export const fetchAllTracks = (filter, success, error) => {
     headers: {'Accept': 'application/json'}
   })
   .then(response => response.json())
-  .then( resData => resData)
-  .then(data => success(data))
+  .then(data => {
+      console.log(data);
+      success(data);
+    })
   .catch(err => {
     error(err);
   });

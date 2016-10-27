@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ToolbarAndroid } from 'react-native';
 import React, { Component } from 'react';
+import TracksIndex from '../components/tracks/tracks_index_container.js';
 
 class App extends Component {
   componentWillMount(){
@@ -27,6 +28,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1
   }
-})
+});
 
 export default App;
